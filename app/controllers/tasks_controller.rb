@@ -4,10 +4,6 @@ class TasksController < ApplicationController
   before_action :correct_user, only: [:destroy]
   
   
-  #def index
-    #@pagy, @tasks = pagy(Task.all, items:20)
-  #end
-  
   def index
     if logged_in?
       @task = current_user.tasks.build  # form_with 用
@@ -21,8 +17,6 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
   end
-  
-  before_action :require_user_logged_in
   
   def create
     @task = current_user.tasks.build(task_params)
